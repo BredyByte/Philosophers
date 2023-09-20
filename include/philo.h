@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/19 18:30:03 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:14:29 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,34 @@
 
 typedef struct s_philo
 {
-	int	num_of_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	num_of_eat;
-	int	*forks;
-}		t_philo;
+	int				id;
+	pthread_t		thread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+}				t_philo;
 
+typedef struct s_table
+{
+	int				num_of_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				num_of_eat;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
+}					t_table;
+
+// libft.c
+
+int	ft_isdigit(int c);
 int	ft_atoi(const char *str);
+
+// ft_arg_checker.c
+
+int	ft_arg_checker(int argc, char **argv);
+
+// utils.c
+
+void	ft_error(char *error, t_table *t);
 
 #endif

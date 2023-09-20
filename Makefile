@@ -10,9 +10,7 @@ INC_PATH = include
 
 HEADERS	= -I ./include
 
-SRC_FILES = init.c
-
-SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
+SRC := $(wildcard $(SRC_PATH)/*.c)
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 ORANGE = \033[1;38;5;208m
