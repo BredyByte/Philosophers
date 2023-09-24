@@ -6,22 +6,31 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:41:44 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/22 12:16:35 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:26:28 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	smart_sleep(t_philo *p, int time)
+u_int64_t	ft_get_time_in_ms(void)
 {
-	long long	start;
+	struct timeval	tv;
 
-	start = ft_get_time_in_ms();
-	while (ft_get_time_in_ms() - start < time && !p->table->is_dead)
-		usleep(100);
+	if (gettimeofday(&tv, NULL))
+		return (ft_error("Error: gettimeofday\n", NULL));
+	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }
 
-int	ft_time_def(long long pres, long long past)
+void	smart_sleep(useconds_t time)
+{
+	u_int64_t	start;
+
+	start = ft_get_time_in_ms();
+	while ((ft_get_time_in_ms() - start) < time)
+		usleep(time / 10);
+}
+
+int	ft_time_diff(u_int64_t pres, u_int64_t past)
 {
 	return (pres - past);
 }
@@ -35,35 +44,12 @@ void	ft_put_action(t_table *t, int filo_id, char *str)
 	pthread_mutex_unlock(&t->writing);
 }
 
-long long	ft_get_time_in_ms(void)
+void	num_of_eat_checker(t_table *t)
 {
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-}
-
-void	ft_free(t_table *t)
-{
-	int	i;
-
-	if (t->philos)
-	{
-		free(t->philos);
-		t->philos = NULL;
-	}
-	if (t->forks)
-	{
-		i = 0;
-		while (i < t->num_of_philo)
-			pthread_mutex_destroy(&t->forks[i++]);
-		free(t->forks);
-		t->forks = NULL;
-	}
-}
-
-void	ft_error(char *error)
-{
-	printf("%s", error);
-	exit(1);
+	if (t->num_of_eat == -1)
+		return ;
+	if (t->all_ate != (t->num_of_eat * t->num_of_philo))
+		return ;
+	t->is_dead = true;
+	pthread_mutex_lock(&t->meal_check);
 }
