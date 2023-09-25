@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:46:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/25 13:59:40 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:21:22 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_death_checker(t_table *t)
 			if (ft_time_diff(t->philos[i].last_meal, ft_get_time_in_ms())
 				> t->time_to_die)
 			{
-				ft_put_action(t, t->philos[i].id, "died");
+				ft_put_action(t, t->philos[i].id, "died 💀");
 				t->is_dead = true;
 			}
 			pthread_mutex_unlock(&t->meal_check);
@@ -51,11 +51,11 @@ static void	ft_death_checker(t_table *t)
 static void	ft_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->table->forks[p->left_fork_id]));
-	ft_put_action(p->table, p->id, "has taken a fork");
+	ft_put_action(p->table, p->id, "has taken a fork 🍴");
 	pthread_mutex_lock(&(p->table->forks[p->right_fork_id]));
-	ft_put_action(p->table, p->id, "has taken a fork");
+	ft_put_action(p->table, p->id, "has taken a fork 🍴");
 	pthread_mutex_lock(&(p->table->meal_check));
-	ft_put_action(p->table, p->id, "is eating");
+	ft_put_action(p->table, p->id, "is eating 🍝");
 	p->last_meal = ft_get_time_in_ms();
 	pthread_mutex_unlock(&(p->table->meal_check));
 	smart_sleep(p->table->time_to_eat);
@@ -76,9 +76,9 @@ static void	*philosopher_routine(void *arg)
 		ft_eat(p);
 		if (p->x_eat == p->table->num_of_eat)
 			break ;
-		ft_put_action(p->table, p->id, "is sleeping");
+		ft_put_action(p->table, p->id, "is sleeping 💤");
 		smart_sleep(p->table->time_to_sleep);
-		ft_put_action(p->table, p->id, "is thinking");
+		ft_put_action(p->table, p->id, "is  thinking 🤔");
 	}
 	return (NULL);
 }
@@ -94,7 +94,6 @@ int	philosophers(t_table *table)
 		if (pthread_create(&table->philos[i].thread, NULL, philosopher_routine,
 				&table->philos[i]))
 			return (1);
-		usleep(1);
 	}
 	ft_death_checker(table);
 	i = -1;

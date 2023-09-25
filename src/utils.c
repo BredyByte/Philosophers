@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:41:44 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/25 14:00:00 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:21:33 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	ft_put_action(t_table *t, int filo_id, char *str)
 {
 	pthread_mutex_lock(&t->writing);
 	if (!t->is_dead)
-		printf("%lld %d %s\n", ft_get_time_in_ms() - t->start_time, filo_id + 1,
-			str);
+	{
+		printf("[\033[1;93m%06lld\033[0m]  \033[1;92m%03d  \033[1;95m%s\n\033[0m\n",
+			ft_get_time_in_ms() - t->start_time, filo_id + 1, str);
+	}
 	pthread_mutex_unlock(&t->writing);
 }
