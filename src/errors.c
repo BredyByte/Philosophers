@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:33:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/25 14:00:41 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:53:48 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	ft_exit(t_table *t)
 	ft_clear_data(t);
 }
 
-int	ft_error(char *str, t_table *t)
+int	ft_error(char *str, t_table *t, int flag)
 {
 	printf("%s\n", str);
-	if (t)
+	if (flag)
 		ft_exit(t);
-	return (1);
+	else
+		(void) t;
+	exit(1);
 }
