@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:08:50 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/24 17:08:16 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:43:18 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ static int	ft_init_philos(t_table *t)
 		return (1);
 	while (i < t->num_of_philo)
 	{
-		t->philos[i].id = i + 1;
+		t->philos[i].id = i;
 		t->philos[i].left_fork_id = i;
 		t->philos[i].right_fork_id = (i + 1) % t->num_of_philo;
 		t->philos[i].table = t;
 		t->philos[i].last_meal = 0;
 		t->philos[i].table = t;
+		t->philos[i].x_eat = 0;
 		i++;
 	}
 	return (0);
@@ -61,7 +62,6 @@ int	ft_init(t_table *t, int argc, char **argv)
 	t->time_to_eat = ft_atoi(argv[3]);
 	t->time_to_sleep = ft_atoi(argv[4]);
 	t->start_time = 0;
-	t->all_ate = 0;
 	t->is_dead = false;
 	if (argc == 6)
 		t->num_of_eat = ft_atoi(argv[5]);

@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/24 16:49:45 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:00:10 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_philo
 	int			left_fork_id;
 	int			right_fork_id;
 	u_int64_t	last_meal;
+	int			x_eat;
 	t_table		*table;
 }				t_philo;
 
@@ -39,7 +40,6 @@ struct s_table
 	int				time_to_sleep;
 	int				num_of_eat;
 	bool			is_dead;
-	int				all_ate;
 	u_int64_t		start_time;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;

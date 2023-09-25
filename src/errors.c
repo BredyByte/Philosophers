@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:33:38 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/24 15:34:13 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:00:41 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ int	ft_error(char *str, t_table *t)
 		ft_exit(t);
 	return (1);
 }
-
