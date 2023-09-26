@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:46:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/26 13:31:25 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:21:51 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_death_checker(t_table *t)
 		while (++i < t->num_of_philo && !(t->is_dead))
 		{
 			pthread_mutex_lock(&t->meal_check);
-			if (ft_time_diff(t->philos[i].last_meal, ft_get_time_in_ms())
+			if ((int)(ft_time_diff(t->philos[i].last_meal, ft_get_time_in_ms()))
 				> t->time_to_die)
 			{
 				ft_put_action(t, t->philos[i].id, "died");
