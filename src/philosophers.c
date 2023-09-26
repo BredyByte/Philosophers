@@ -6,24 +6,11 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:46:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/25 16:33:49 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:07:24 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static void	ft_num_of_eat_check(t_table *t)
-{
-	int	i;
-
-	i = -1;
-	while (++i < t->num_of_philo)
-	{
-		if (t->philos[i].x_eat != t->num_of_eat)
-			return ;
-	}
-	t->is_dead = true;
-}
 
 static void	ft_death_checker(t_table *t)
 {
@@ -38,11 +25,10 @@ static void	ft_death_checker(t_table *t)
 			if (ft_time_diff(t->philos[i].last_meal, ft_get_time_in_ms())
 				> t->time_to_die)
 			{
-				ft_put_action(t, t->philos[i].id, "died");
+				ft_put_action(t, t->philos[i].id, "died 😵");
 				t->is_dead = true;
 			}
 			pthread_mutex_unlock(&t->meal_check);
-			smart_sleep(100);
 		}
 		ft_num_of_eat_check(t);
 	}
@@ -51,11 +37,11 @@ static void	ft_death_checker(t_table *t)
 static void	ft_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->table->forks[p->left_fork_id]));
-	ft_put_action(p->table, p->id, "has taken a fork");
+	ft_put_action(p->table, p->id, "has taken a fork 🍴");
 	pthread_mutex_lock(&(p->table->forks[p->right_fork_id]));
-	ft_put_action(p->table, p->id, "has taken a fork");
+	ft_put_action(p->table, p->id, "has taken a fork 🍴");
 	pthread_mutex_lock(&(p->table->meal_check));
-	ft_put_action(p->table, p->id, "is eating");
+	ft_put_action(p->table, p->id, "is eating 🍝");
 	p->last_meal = ft_get_time_in_ms();
 	pthread_mutex_unlock(&(p->table->meal_check));
 	smart_sleep(p->table->time_to_eat);
@@ -67,9 +53,9 @@ static void	ft_eat(t_philo *p)
 static void	ft_eat_for_one(t_philo *p)
 {
 	pthread_mutex_lock(&(p->table->forks[p->left_fork_id]));
-	ft_put_action(p->table, p->id, "has taken a fork");
+	ft_put_action(p->table, p->id, "has taken a fork 🍴");
 	smart_sleep(p->table->time_to_die);
-	ft_put_action(p->table, p->id, "died");
+	ft_put_action(p->table, p->id, "died 😵");
 	p->table->is_dead = true;
 }
 
@@ -87,9 +73,9 @@ static void	*philosopher_routine(void *arg)
 		ft_eat(p);
 		if (p->x_eat == p->table->num_of_eat)
 			break ;
-		ft_put_action(p->table, p->id, "is sleeping");
+		ft_put_action(p->table, p->id, "is sleeping 💤");
 		smart_sleep(p->table->time_to_sleep);
-		ft_put_action(p->table, p->id, "is  thinking");
+		ft_put_action(p->table, p->id, "is  thinking 🤔");
 	}
 	return (NULL);
 }
