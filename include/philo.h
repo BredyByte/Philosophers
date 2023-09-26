@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/26 11:05:20 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:32:11 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int			ft_arg_checker(int argc, char **argv);
 
 u_int64_t	ft_get_time_in_ms(void);
 void		ft_put_action(t_table *t, int filo_id, char *str);
-int			ft_time_diff(u_int64_t pres, u_int64_t past);
-void		smart_sleep(useconds_t time);
+u_int64_t	ft_time_diff(u_int64_t past, u_int64_t pres);
+void		smart_sleep(u_int64_t time, t_table *t);
 void		ft_num_of_eat_check(t_table *t);
 
 // errors.c

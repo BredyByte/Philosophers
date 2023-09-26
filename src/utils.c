@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:41:44 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/26 12:45:42 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:31:58 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,24 @@ u_int64_t	ft_get_time_in_ms(void)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL))
-		return (ft_error("Error: gettimeofday\n", NULL, 1));
+	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * (u_int64_t)1000) + (tv.tv_usec / 1000));
 }
 
-void	smart_sleep(useconds_t time)
+void		smart_sleep(u_int64_t time, t_table *t)
 {
-	u_int64_t	start;
+	u_int64_t	i;
 
-	start = ft_get_time_in_ms();
-	while ((ft_get_time_in_ms() - start) < time)
-		usleep(time / 10);
+	i = ft_get_time_in_ms();
+	while (!(t->is_dead))
+	{
+		if (ft_time_diff(i, ft_get_time_in_ms()) >= time)
+			break ;
+		usleep(50);
+	}
 }
 
-int	ft_time_diff(u_int64_t past, u_int64_t pres)
+u_int64_t	ft_time_diff(u_int64_t past, u_int64_t pres)
 {
 	return (pres - past);
 }
@@ -40,7 +43,7 @@ void	ft_put_action(t_table *t, int filo_id, char *str)
 	pthread_mutex_lock(&t->writing);
 	if (!t->is_dead)
 	{
-		printf("[\033[1;93m%06lld\033[0m]  \033[1;92m%03d  \033[1;95m%s\n\033[0m\n",
+		printf("%lld %d %s\n",
 			ft_get_time_in_ms() - t->start_time, filo_id + 1, str);
 	}
 	pthread_mutex_unlock(&t->writing);
