@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:46:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/26 15:21:51 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:56:41 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_eat_for_one(t_philo *p)
 {
 	pthread_mutex_lock(&(p->table->forks[p->left_fork_id]));
 	ft_put_action(p->table, p->id, "has taken a fork");
-	smart_sleep(p->table->time_to_die, p->table);
+	smart_sleep(p->table->time_to_die + 1, p->table);
 	ft_put_action(p->table, p->id, "died");
 	p->table->is_dead = true;
 }
