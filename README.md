@@ -54,12 +54,14 @@ gcc -fsanitize=thread -g3
 ## Introduction
 
 Please comply with the following rules:
-* Remain polite, courteous, respectful and constructive throughout the
+Remain polite, courteous, respectful and constructive throughout the
 evaluation process. The well-being of the community depends on it.
-* Identify with the student or group whose work is evaluated the possible
+
+Identify with the student or group whose work is evaluated the possible
 dysfunctions in their project. Take the time to discuss and debate the
 problems that may have been identified.
-* You must consider that there might be some differences in how your peers
+
+You must consider that there might be some differences in how your peers
 might have understood the project's instructions and the scope of its
 functionalities. Always keep an open mind and grade them as honestly as
 possible. The pedagogy is useful only and only if the peer-evaluation is
@@ -128,35 +130,37 @@ and check the code, but do not grade the exercises.
 
 **philo code:**
 
-- Ensure the code of philo complies with the following requirements and ask for explanations.
+Ensure the code of philo complies with the following requirements and ask for explanations.
 
-- Check there is one thread per philosopher.
+Check there is one thread per philosopher.
 
-- Check there is only one fork per philosopher.
+Check there is only one fork per philosopher.
 
-- Check if there is a mutex per fork and that it's used to check the fork value and/or change it.
-- Check the outputs are never mixed up.
+Check if there is a mutex per fork and that it's used to check the fork value and/or change it.
 
-- Check how the death of a philosopher is verified and if there is a mutex to prevent a philosopher from dying and starting eating at the same time.
+Check the outputs are never mixed up.
+
+Check how the death of a philosopher is verified and if there is a mutex to prevent a philosopher from dying and starting eating at the same time.
 
 **philo testing:**
 
-- Do not test with more than 200 philosophers.
+Do not test with more than 200 philosophers.
 
-- Do not test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60 ms.
+Do not test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60 ms.
 
-- Test 1 800 200 200. The philosopher should not eat and should die.
-- Test 5 800 200 200. No philosopher should die.
+Test 1 800 200 200. The philosopher should not eat and should die.
 
-- Test 5 800 200 200 7 . No philosopher should die and the simulation should stop when every philosopher has eaten at least 7 times.
+Test 5 800 200 200. No philosopher should die.
 
-- Test 4 410 200 200. No philosopher should die.
+Test 5 800 200 200 7 . No philosopher should die and the simulation should stop when every philosopher has eaten at least 7 times.
 
-- Test 4 310 200 100. One philosopher should die.
+Test 4 410 200 200. No philosopher should die.
 
-- Test with 2 philosophers and check the different times: a death delayed by more than 10 ms is unacceptable.
+Test 4 310 200 100. One philosopher should die.
 
-- Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time,that they don't steal forks, and so forth.
+Test with 2 philosophers and check the different times: a death delayed by more than 10 ms is unacceptable.
+
+Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time,that they don't steal forks, and so forth.
 
 ## 🔗 Useful Links
 
