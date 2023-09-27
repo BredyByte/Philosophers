@@ -1,8 +1,8 @@
 NAME = philo
 
-CC = gcc -g
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-REMOVE = rm -r
+REMOVE = rm -rf
 
 OBJ_PATH = obj
 SRC_PATH = src
@@ -10,7 +10,11 @@ INC_PATH = include
 
 HEADERS	= -I ./include
 
-SRC := $(wildcard $(SRC_PATH)/*.c)
+SRC_FILES =  errors.c ft_arg_checker.c init.c \
+			libft.c philosophers.c utils.c \
+			ft_death_checker.c \
+
+SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 ORANGE = \033[1;38;5;208m

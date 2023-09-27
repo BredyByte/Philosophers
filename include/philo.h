@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/26 13:32:11 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:59:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ typedef struct s_table	t_table;
 
 typedef struct s_philo
 {
-	int			id;
-	pthread_t	thread;
-	int			left_fork_id;
-	int			right_fork_id;
-	u_int64_t	last_meal;
-	int			x_eat;
-	t_table		*table;
+	int				id;
+	pthread_t		thread;
+	int				left_fork_id;
+	int				right_fork_id;
+	u_int64_t		last_meal;
+	int				x_eat;
+	t_table			*table;
+	pthread_mutex_t	x_eat_mutex;
 }				t_philo;
 
 struct s_table
@@ -45,6 +46,7 @@ struct s_table
 	t_philo			*philos;
 	pthread_mutex_t	meal_check;
 	pthread_mutex_t	writing;
+	pthread_mutex_t	dead_mutex;
 	int				check;
 };
 
@@ -73,5 +75,9 @@ int			ft_error(char *str, t_table *t, int flag);
 // philosophers.c
 
 int			philosophers(t_table *table);
+
+// ft_death_checker.c
+
+void ft_death_checker(t_table *t);
 
 #endif
