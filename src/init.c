@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:08:50 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/27 18:16:10 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/29 13:23:11 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static int	ft_init_mutex(t_table *t)
 			return (1);
 		i++;
 	}
-	if (pthread_mutex_init(&(t->writing), NULL))
-		return (1);
 	if (pthread_mutex_init(&(t->meal_check), NULL))
 		return (1);
 	if (pthread_mutex_init(&(t->dead_mutex), NULL))

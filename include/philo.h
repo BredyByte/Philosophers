@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/27 18:59:23 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/29 14:11:32 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ struct s_table
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 	pthread_mutex_t	meal_check;
-	pthread_mutex_t	writing;
 	pthread_mutex_t	dead_mutex;
 	int				check;
 };
@@ -65,7 +64,7 @@ u_int64_t	ft_get_time_in_ms(void);
 void		ft_put_action(t_table *t, int filo_id, char *str);
 u_int64_t	ft_time_diff(u_int64_t past, u_int64_t pres);
 void		smart_sleep(u_int64_t time, t_table *t);
-void		ft_num_of_eat_check(t_table *t);
+int			ft_num_of_eat_check(t_table *t);
 
 // errors.c
 
@@ -78,6 +77,6 @@ int			philosophers(t_table *table);
 
 // ft_death_checker.c
 
-void ft_death_checker(t_table *t);
+void		ft_death_checker(t_table *t);
 
 #endif
