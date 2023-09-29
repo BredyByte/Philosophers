@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:08:50 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/29 13:23:11 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:39:01 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ int	main(int argc, char **argv)
 	t_table	table;
 
 	if (ft_arg_checker(argc, argv))
-		ft_error("Arguments error\n", &table, 0);
+		return (printf("Arguments error\n"), 1);
 	if (ft_init(&table, argc, argv))
-		ft_error("Init error\n", &table, 0);
+		return (printf("Init error\n"), 1);
 	if (philosophers(&table))
-		ft_error("Philosophers error\n", &table, 0);
+		return (printf("Philosophers error\n"), 1);
 	ft_exit(&table);
 	return (0);
 }

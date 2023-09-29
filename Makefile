@@ -10,7 +10,7 @@ INC_PATH = include
 
 HEADERS	= -I ./include
 
-SRC_FILES =  errors.c ft_arg_checker.c init.c \
+SRC_FILES =  ft_exit.c ft_arg_checker.c init.c \
 			libft.c philosophers.c utils.c \
 			ft_death_checker.c \
 

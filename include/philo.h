@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:30:25 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/29 14:11:32 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:37:12 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ u_int64_t	ft_time_diff(u_int64_t past, u_int64_t pres);
 void		smart_sleep(u_int64_t time, t_table *t);
 int			ft_num_of_eat_check(t_table *t);
 
-// errors.c
+// ft_exit.c
 
 void		ft_exit(t_table *t);
-int			ft_error(char *str, t_table *t, int flag);
 
 // philosophers.c
 
