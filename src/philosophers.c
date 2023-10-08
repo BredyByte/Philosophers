@@ -6,7 +6,7 @@
 /*   By: dbredykh <dbredykh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:46:54 by dbredykh          #+#    #+#             */
-/*   Updated: 2023/09/29 14:43:18 by dbredykh         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:19:05 by dbredykh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	philosophers(t_table *table)
 		if (pthread_create(&table->philos[i].thread, NULL, philosopher_routine,
 				&table->philos[i]))
 			return (1);
+		table->philos[i].last_meal = ft_get_time_in_ms();
 	}
 	ft_death_checker(table);
 	i = -1;
