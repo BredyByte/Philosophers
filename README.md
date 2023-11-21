@@ -1,5 +1,7 @@
 # 📚 Philosophers - 42 Campus Project
 
+<3
+
 The philosophers project, part of the 42 Campus curriculum, is an exploration of multithreading and synchronization in programming. This repository does not include the bonus part of the project, it's focused on the primary problem statement.
 
 ## 🎯 Project Goals
